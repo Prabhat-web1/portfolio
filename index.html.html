@@ -54,7 +54,7 @@ nav ul a:hover,nav ul a.cur{background:var(--panel);color:var(--ink)}
 .who span{width:9px;height:9px;border-radius:50%;background:#2fb67c;box-shadow:0 0 0 4px var(--acc2)}
 .map{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:14px;position:relative;overflow:hidden}
 .map svg{display:block;width:100%;height:auto}
-.map .r{fill:none;stroke:var(--acc);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 3.2s .4s cubic-bezier(.6,.1,.2,1) forwards}
+.map .r{fill:none;stroke:var(--acc);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 3.2s 1.5s cubic-bezier(.6,.1,.2,1) forwards}
 @keyframes dr{to{stroke-dashoffset:0}}
 .map .st{fill:none;stroke:var(--line);stroke-width:1.5}
 .tag{position:absolute;left:18px;bottom:18px;background:var(--ink);color:var(--bg);font-size:.82rem;padding:6px 12px;border-radius:99px;font-weight:500}
@@ -171,9 +171,28 @@ dialog img{display:block;width:100%;height:auto;background:#fff}
 @media(max-width:980px){.tg{display:block}nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:10px 20px 18px;border-bottom:1px solid var(--line)}nav ul.open{display:flex}.qk{grid-template-columns:1fr 1fr}.cg{columns:2}}
 @media(max-width:560px){.cg{columns:1}.qk{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pg{animation:none!important}}
+
+/* ===== Load and navigation animation: Wipe (page) + Shape (visual blocks) ===== */
+#wipe{position:fixed;inset:0;z-index:100;background:var(--dark);pointer-events:none;animation:wl .95s .12s cubic-bezier(.77,0,.18,1) both}
+#wipe:before,#wipe:after{content:"";position:absolute;top:0;bottom:0;width:5px;background:var(--acc)}
+#wipe:before{left:-5px}#wipe:after{right:-5px}
+@keyframes wl{to{transform:translateX(110%)}}
+#wipe.rdy{animation:none;transform:translateX(-110%)}
+#wipe.rdy.in{transform:none;transition:transform .33s cubic-bezier(.7,0,.2,1)}
+#wipe.rdy.out{transform:translateX(110%);transition:transform .44s cubic-bezier(.7,0,.2,1)}
+header{animation:hd .6s .5s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes hd{from{opacity:0;transform:translateY(-12px)}}
+.hero .rv:nth-child(n){transition-delay:calc(var(--lag,0s) + var(--x,0s))}
+.hero h1.rv{opacity:1;transform:none;clip-path:inset(-10% 100% -14% -2%);transition:clip-path 1s cubic-bezier(.7,0,.2,1)}
+.hero h1.rv.in{clip-path:inset(-10% -3% -14% -2%)}
+.shp:not(.in){visibility:hidden}
+.shp.in{animation:shp .95s cubic-bezier(.2,.7,.2,1) calc(var(--lag,0s) + var(--x,0s)) backwards}
+@keyframes shp{from{clip-path:inset(34% 30% 34% 30% round 50%);opacity:0;transform:scale(.9)}to{clip-path:inset(0 0 0 0 round 0);opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){#wipe{display:none}header{animation:none}.shp:not(.in){visibility:visible}.hero h1.rv{clip-path:none}}
 </style>
 </head>
 <body>
+<div id="wipe" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header id="top">
 <div class="wrap"><nav aria-label="Primary">
@@ -196,7 +215,7 @@ dialog img{display:block;width:100%;height:auto;background:#fff}
 <path class="st" d="M0 90H440M0 210H440M0 320H440M90 0V400M210 0V400M330 0V400"/>
 <path class="st" d="M0 150L170 130 440 180M60 400L130 260 400 300" />
 <path id="rt" class="r" pathLength="1" d="M40 340C90 330 110 260 160 250S250 300 280 230 250 130 310 110 380 70 400 50"/>
-<circle r="9" fill="var(--acc)" id="dot" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="3.6s" dur=".3s" fill="freeze"/><animateMotion dur="7s" begin="3.6s" repeatCount="indefinite"><mpath href="#rt"/></animateMotion></circle>
+<circle r="9" fill="var(--acc)" id="dot" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="4.8s" dur=".3s" fill="freeze"/><animateMotion dur="7s" begin="4.8s" repeatCount="indefinite"><mpath href="#rt"/></animateMotion></circle>
 <circle cx="40" cy="340" r="6" fill="var(--ink)"/><circle cx="400" cy="50" r="6" fill="none" stroke="var(--ink)" stroke-width="3"/>
 </svg>
 <span class="tag">Socket.IO · about 25 ms to every client</span>
@@ -296,7 +315,16 @@ links.forEach(function(a){a.classList.toggle("cur",a.dataset.r===k)});
 document.title="Prabhat Nanda | "+TT[k];scrollTo(0,0);setTimeout(observe,30)}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.2});
 function observe(){document.querySelectorAll(".rv:not(.in)").forEach(function(el){io.observe(el)})}
-addEventListener("hashchange",route);route();
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches,wp=document.getElementById("wipe"),root=document.documentElement,busy=false,pend=false;
+function mark(s,c,f){document.querySelectorAll(s).forEach(function(e,i){e.classList.add.apply(e.classList,c.split(" "));if(f)e.style.setProperty("--x",f(i)+"s")})}
+function sx(s,x){var e=document.querySelector(s);if(e)e.style.setProperty("--x",x+"s")}
+mark(".facts,.edu,.skc,.tl article,.soft,.qk","rv");mark(".vis,.ct","rv shp");mark(".map","shp");mark(".cd","rv shp",function(i){return i*.07});
+sx(".who",.05);sx(".hero h1",.2);sx(".hero .lead",.35);sx(".hero .cta",.5);sx(".map",.6);sx(".qk",.75);
+function done(){busy=false;root.style.setProperty("--lag","0s");if(pend){pend=false;go()}}
+function go(){if(RM){route();return}if(busy){pend=true;return}busy=true;wp.className="rdy in";setTimeout(function(){route();wp.className="rdy out";setTimeout(function(){wp.className="rdy";done()},440)},330)}
+root.style.setProperty("--lag",RM?"0s":".55s");
+if(!RM){busy=true;wp.addEventListener("animationend",function(){wp.className="rdy";done()},{once:true});setTimeout(function(){if(busy&&wp.className!=="rdy"){wp.className="rdy";done()}},1600)}
+addEventListener("hashchange",go);route();
 var h=document.querySelector("header"),bar=document.getElementById("bar");
 function sc(){h.classList.toggle("on",scrollY>8);var m=document.documentElement.scrollHeight-innerHeight;bar.style.width=(m>0?scrollY/m*100:0)+"%"}
 addEventListener("scroll",sc,{passive:true});sc();

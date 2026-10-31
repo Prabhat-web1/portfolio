@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Prabhat Nanda | Full-stack developer</title>
+    <meta name="description" content="Prabhat Nanda is a B.Tech CSE student building real-time full-stack apps and explainable ML tools. Projects, skills and contact.">
+    <meta property="og:title" content="Prabhat Nanda | Full-stack developer">
+    <meta property="og:description" content="Real-time web apps, explainable ML and Java desktop software.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="wipe" aria-hidden="true"></div>
+    <a class="skip" href="#main">Skip to content</a>
+    <header id="top">
+      <div class="wrap">
+        <nav aria-label="Primary">
+          <a class="logo" href="#/"><i>PN</i>Prabhat Nanda</a>
+          <button class="tg" aria-expanded="false" aria-controls="menu">Menu</button>
+          <ul id="menu">
+            <li>
+              <a href="#/" data-r="">Home</a>
+            </li>
+            <li>
+              <a href="#/about" data-r="about">About</a>
+            </li>
+            <li>
+              <a href="#/experience" data-r="experience">Experience</a>
+            </li>
+            <li>
+              <a href="#/projects" data-r="projects">Projects</a>
+            </li>
+            <li>
+              <a href="#/skills" data-r="skills">Skills</a>
+            </li>
+            <li>
+              <a href="#/certificates" data-r="certificates">Certificates</a>
+            </li>
+            <li>
+              <a href="#/contact" data-r="contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="bar" id="bar"></div>
+    </header>
+    <main id="main">
+      <section class="hero" id="hero">
+        <div class="wrap hg">
+          <div>
+            <p class="who rv"><span></span>B.Tech CSE student at Lovely Professional University</p>
+            <h1 class="rv">Full-stack builder with a thing for live data and explainable ML.</h1>
+            <p class="lead rv">I make apps that <b>update in real time</b> and models that <b>show their reasoning</b>. My latest work: a vehicle tracker with about 25 ms broadcast latency, and a classifier that tells you why it answered the way it did.</p>
+            <div class="cta rv">
+              <a class="btn" href="#/projects">See my projects <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+              <a class="btn g" href="#/contact">Get in touch</a>
+            </div>
+          </div>
+          <div class="map rv" role="img" aria-label="Animated route being traced on a map, like a vehicle tracker">
+            <svg viewBox="0 0 440 400" aria-hidden="true"> <path class="st" d="M0 90H440M0 210H440M0 320H440M90 0V400M210 0V400M330 0V400"/> <path class="st" d="M0 150L170 130 440 180M60 400L130 260 400 300" /> <path id="rt" class="r" pathLength="1" d="M40 340C90 330 110 260 160 250S250 300 280 230 250 130 310 110 380 70 400 50"/> <circle r="9" fill="var(--acc)" id="dot" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="4.8s" dur=".3s" fill="freeze"/><animateMotion dur="7s" begin="4.8s" repeatCount="indefinite"><mpath href="#rt"/></animateMotion></circle> <circle cx="40" cy="340" r="6" fill="var(--ink)"/><circle cx="400" cy="50" r="6" fill="none" stroke="var(--ink)" stroke-width="3"/> </svg>
+            <span class="tag">Socket.IO · about 25 ms to every client</span>
+          </div>
+        </div>
+        <div class="wrap qk">
+          <a href="#/projects"><b>Projects</b><span>Tracker, classifier, desktop app</span></a>
+          <a href="#/skills"><b>Skills</b><span>The stack, by category</span></a>
+          <a href="#/certificates"><b>Certificates</b><span>Five documents you can open</span></a>
+          <a href="#/experience"><b>Experience</b><span>Internships and contests</span></a>
+        </div>
+      </section>
+      <section id="work">
+        <div class="wrap">
+          <h2>Three things I've built this year</h2>
+          <div style="margin-top:40px">
+            <article class="pj">
+              <div class="vis mp rv" aria-hidden="true">
+                <svg viewBox="0 0 300 220"><path d="M0 70H300M0 150H300M100 0V220M200 0V220" stroke="var(--line)" fill="none"/><path class="r2" pathLength="1" d="M30 180C70 170 80 120 120 115S190 150 210 100 190 50 270 35"/><circle cx="30" cy="180" r="6" fill="var(--ink)"/><circle cx="270" cy="35" r="7" fill="var(--acc)"/></svg>
+              </div>
+              <div>
+                <h3>Real-time Vehicle Tracking System</h3>
+                <p class="when">Live · July 2026</p>
+                <p class="d">A browser-based tracker that follows a vehicle on a map without anyone refreshing the page, and lets you replay where it has been.</p>
+                <ul class="pts">
+                  <li>Uses the browser's GPS and Socket.IO to push positions to every connected client in roughly 25 ms.</li>
+                  <li>Stores location history in PostgreSQL through Prisma, then plays routes back on Leaflet.js.</li>
+                  <li>Protects API routes with JWT authentication; the frontend is responsive for phones and desktops.</li>
+                </ul>
+                <div class="chips">
+                  <span>Node.js</span>
+                  <span>Socket.IO</span>
+                  <span>PostgreSQL</span>
+                  <span>Prisma</span>
+                  <span>Leaflet.js</span>
+                  <span>JWT</span>
+                </div>
+                <a class="lk" href="https://github.com/Prabhat-web1">Code on GitHub</a>
+              </div>
+            </article>
+            <article class="pj">
+              <div class="vis rv" aria-hidden="true">
+                <div>
+                  <div class="bars">
+                    <i style="--h:100%;--i:0"></i>
+                    <i style="--h:64%;--i:1"></i>
+                    <i style="--h:44%;--i:2"></i>
+                    <i style="--h:30%;--i:3"></i>
+                    <i style="--h:18%;--i:4"></i>
+                  </div>
+                  <p class="cap">Class probabilities across five categories</p>
+                </div>
+              </div>
+              <div>
+                <h3>AI Paranormal Investigation Bot</h3>
+                <p class="when">Live · July 2026</p>
+                <p class="d">A text classifier for paranormal narratives that is built to be questioned: every prediction comes with its evidence.</p>
+                <ul class="pts">
+                  <li>Sorts narratives into five categories with TF-IDF and SGDClassifier, at about 65% overall accuracy.</li>
+                  <li>Returns class probabilities, a confidence score and the keywords that drove the call.</li>
+                  <li>Llama 3.1 (via Groq) only rewrites the output in plain language. The classification stays deterministic, so the explanation can't invent facts.</li>
+                </ul>
+                <div class="chips">
+                  <span>Python</span>
+                  <span>Scikit-learn</span>
+                  <span>TF-IDF</span>
+                  <span>Llama 3.1</span>
+                  <span>Groq API</span>
+                </div>
+                <a class="lk" href="https://github.com/Prabhat-web1">Code on GitHub</a>
+              </div>
+            </article>
+            <article class="pj">
+              <div class="vis rv" aria-hidden="true">
+                <div class="rows">
+                  <div>
+                    <b>Sign in</b>
+                    <span class="ok"></span>
+                  </div>
+                  <div>Java <em>validated</em></div>
+                  <div>Data Structures <em>saved</em></div>
+                  <div>Collections <em>restored</em></div>
+                </div>
+              </div>
+              <div>
+                <h3>Skill Progress Tracker</h3>
+                <p class="when">May 2026 · Java summer training project</p>
+                <p class="d">A desktop app for logging what you're learning, written to stay reliable when input or files go wrong.</p>
+                <ul class="pts">
+                  <li>Login gateway and reusable validation so only valid skill records get in.</li>
+                  <li>Saves with BufferedReader and BufferedWriter, restores on next launch and copes with corrupted records.</li>
+                  <li>Exception handling and utility functions that turn bad input into clear messages, not crashes.</li>
+                </ul>
+                <div class="chips">
+                  <span>Java Swing</span>
+                  <span>AWT</span>
+                  <span>Data Structures</span>
+                  <span>File I/O</span>
+                </div>
+                <a class="lk" href="https://github.com/Prabhat-web1">Code on GitHub</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="about">
+        <div class="wrap ab">
+          <h2>Learning by shipping</h2>
+          <div>
+            <p>I'm in my third year of B.Tech Computer Science at Lovely Professional University. I learn fastest when something has to <b>actually run</b>, which is why most of my work is deployed rather than left as notebooks.</p>
+            <p>Two threads run through it. One is <b>real-time web</b>: sockets, maps, databases and secured APIs. The other is <b>ML you can trust</b>: models that show probabilities and evidence, with language models used only to explain, never to guess.</p>
+            <p>Core Java and data structures are the base under both. I'm looking for internships and entry-level roles where I can keep building and learn from a team.</p>
+            <div class="facts">
+              <div><strong>3</strong>projects shipped in 2026</div>
+              <div><strong>4</strong>languages: C++, Python, C, Java</div>
+              <div><strong>Top 10</strong>Hack AI Season 2 finalist</div>
+            </div>
+            <div class="edu">
+              <b>Education</b>
+              <p style="margin:6px 0 0">B.Tech, Computer Science and Engineering at Lovely Professional University, Phagwara. August 2024 to present.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="stack">
+        <div class="wrap">
+          <h2>What I work with</h2>
+          <p class="intro">Everything here comes from projects I have built or training I have finished.</p>
+          <div id="skg"></div>
+          <p class="soft">Beyond code: problem-solving, leadership, adaptability and teamwork.</p>
+        </div>
+      </section>
+      <section id="experience">
+        <div class="wrap">
+          <h2>Internships, training and contests</h2>
+          <div class="two">
+            <div>
+              <p class="sub">Experience</p>
+              <div class="tl" style="margin-top:22px">
+                <article>
+                  <h3>Java Summer Internship</h3>
+                  <p class="m">Lovely Professional University · Jun to Jul 2026</p>
+                  <p>Mastering Data Structures in Java: classes, encapsulation, exception handling, ArrayList, HashMap, Stack, searching and Comparator-based sorting. It ended with a full Swing desktop app (the Skill Progress Tracker) and a Certificate of Merit with Grade A.</p>
+                </article>
+                <article>
+                  <h3>CSR Project Intern, CyberSmart Awareness</h3>
+                  <p class="m">WNS Cares Foundation · Jul to Aug 2025</p>
+                  <p>A CSR internship with the WNS Cares Foundation team. The certificate lists presentation and tutoring skills, community outreach, networking and relationship management.</p>
+                </article>
+              </div>
+            </div>
+            <div>
+              <p class="sub">Contests and achievements</p>
+              <ul class="list">
+                <li>Top 10 finalist, Hack AI Season 2 (Student Career Committee)<span></span></li>
+                <li>18-hour Code-A-Fest X 2.0 coding competition<span></span></li>
+                <li>Break the Bug debugging competition by Infineon<span></span></li>
+              </ul>
+              <p class="sub" style="margin-top:34px">Education</p>
+              <ul class="list">
+                <li>B.Tech, Computer Science and Engineering, Lovely Professional University<span>2024 to now</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="certs">
+        <div class="wrap">
+          <h2>Certificates</h2>
+          <p class="intro">Tap any certificate to read it in full.</p>
+          <div class="flt" role="group" aria-label="Filter certificates">
+            <button class="on" data-f="all">All</button>
+            <button data-f="course">Courses</button>
+            <button data-f="intern">Internship</button>
+            <button data-f="contest">Contests</button>
+          </div>
+          <div id="cg" class="cg"></div>
+          <p class="soft" style="margin-top:36px"><b>Also on my CV:</b> Claude Code 101 badge (Aug 2026), Infosys Springboard (Aug 2025), Top 10 at Hack AI Season 2, and Code-A-Fest X 2.0. Their files are not on the site yet.</p>
+        </div>
+      </section>
+      <section id="contact" style="padding-top:20px">
+        <div class="wrap">
+          <div class="ct">
+            <h2>Have an internship or project in mind?</h2>
+            <p>I reply to email fastest. If you'd like to see code first, my GitHub has all of the work above.</p>
+            <div class="cta">
+              <a class="btn" id="mail" href="mailto:prabhatknanda.1234@gmail.com">prabhatknanda.1234@gmail.com</a>
+              <button class="btn g" id="copy" type="button">Copy email</button>
+              <a class="btn g" href="https://github.com/Prabhat-web1">GitHub</a>
+              <a class="btn g" href="http://www.linkedin.com/in/prabhat-nanda-xy">LinkedIn</a>
+            </div>
+            <p style="margin:22px 0 0;font-size:.95rem">Phone: <a href="tel:+919279151804">+91 92791 51804</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <span>© 2026 Prabhat Nanda</span>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+    <dialog id="lb" aria-label="Certificate preview">
+      <button class="lbx" aria-label="Close preview">×</button>
+      <img alt="">
+      <div class="lbm">
+        <h3></h3>
+        <p class="o"></p>
+        <p class="n"></p>
+      </div>
+    </dialog>
+    <script src="js/icons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
